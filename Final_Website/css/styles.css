@@ -1,0 +1,43 @@
+body {
+    background: rgb(53, 94, 59)
+ }
+
+ a:link{
+    color: white;
+ }
+
+ a:visited {
+    color: grey;
+ }
+
+ h1 {
+    text-align: center;
+    color: rgb(218, 147, 32);
+    letter-spacing: 2px;
+ }
+
+ h2{
+    color: rgb(218, 147, 32); 
+    text-align: center
+ }
+
+ p {
+    color:rgb(250, 188, 101);
+    text-align: justify;
+    font-size: large;
+ }
+
+ /* Define a style for the container element */
+#container {
+    display: flex;  /* Use flexbox layout to position the elements side by side */
+    align-items: center;  /* Center the elements vertically within the container */
+}
+  
+  /* Define a style for the canvas element */
+canvas {
+    margin-right: 10px;  /* Add a margin to the right side of the canvas */
+}
+  
+ul {
+    color: rgb(233, 116, 81)
+}

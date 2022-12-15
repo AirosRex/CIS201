@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Sam's Sandwich Shop</title>
+    <meta name="author" content="Soria">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>Welcome to Sam's Stupendous Sandwich Shop!</h1>
+    <h2 id="tagline">Where Delicious Deli Disappears Daily!</h2>
+    <h2 id="message"></h2>
+
+    <style>
+      body {
+        background: rgb(53, 94, 59)
+      }
+    
+      h1 {
+        text-align: center;
+        color: rgb(218, 147, 32);
+        letter-spacing: 2px;
+      }
+    
+      h2 {
+        color: rgb(218, 147, 32); 
+        text-align: center
+      }
+    
+      p {
+        color:rgb(250, 188, 101);
+        text-align: justify;
+        font-size: large;
+      }
+    
+      /* Define a style for the container element */
+      #container {
+        display: flex;  /* Use flexbox layout to position the elements side by side */
+        align-items: center;  /* Center the elements vertically within the container */
+      }
+    
+      /* Define a style for the canvas element */
+      canvas {
+        margin-right: 10px;  /* Add a margin to the right side of the canvas */
+      }
+    
+      ul {
+        color: rgb(233, 116, 81)
+      }
+    </style>
+    
+    <!-- Create a container element to hold the canvas and paragraph -->
+    <div id="container">
+      <!-- Create a canvas element -->
+      <canvas id="canvas" width="200" height="200"></canvas>
+
+      <!-- Create a paragraph element to hold the text -->
+      <p>
+        Sam's Stupendous Sandwich Shop is the place to go for a delicious and satisfying sandwich. 
+        Our menu features an array of amazing options, including succulent roast beef, tangy turkey, 
+        and mouthwatering meatball sandwiches. All of our sandwiches are made with fresh, 
+        high-quality ingredients and served on your choice of bread. 
+        Plus, we offer a variety of tasty toppings, from crisp lettuce and juicy tomatoes 
+        to zesty pickles and creamy mayonnaise. Stop by Sam's Stupendous 
+        Sandwich Shop today and try one of our scrumptious sandwiches!
+      </p>
+    </div>
+
+    <hr>
+
+    <h2> Menu</h2>
+    <ul>
+      <li id="sandwich-1">
+        <b>Roast Beef</b><br>
+        Thinly sliced roast beef with lettuce, tomato, and mayonnaise on a toasted hoagie roll.
+      </li>
+      <li id="sandwich-2">
+        <b>BLT</b><br>
+        Crispy bacon, lettuce, and tomato with mayonnaise on toasted white bread.
+      </li>
+      <li id="sandwich-3">
+        <b>Chicken Salad</b><br>
+        Shredded chicken mixed with mayonnaise and seasonings, served on a bed of 
+        lettuce with tomato and avocado.
+      </li>
+      <li id="sandwich-4">
+        <b>Grilled Cheese</b><br>
+        Melted cheddar cheese between two slices of buttered white bread, 
+        grilled until golden and crispy.
+      </li>
+      <li id="sandwich-5">
+        <b>Egg Salad</b><br>
+        Chopped hard-boiled eggs mixed with mayonnaise, mustard, and seasonings, 
+        served on your choice of bread.
+      </li>
+      <li id="sandwich-6">
+        <b>Tuna Salad</b><br>
+        Chunk light tuna mixed with mayonnaise, celery, and onions, served on your choice of bread with lettuce and tomato.
+      </li>
+      <li id="sandwich-7">
+        <b>Turkey and Swiss</b><br>
+        Thinly sliced turkey breast with melted Swiss cheese, lettuce, and tomato on toasted wheat bread.
+      </li>
+      <li id="sandwich-8">
+        <b>Ham and Cheese</b><br>
+        Thinly sliced ham with melted cheddar cheese, lettuce, and tomato on toasted white bread.
+      </li>
+      <li id="sandwich-9">
+        <b>Veggie Wrap</b><br>
+        Grilled vegetables with lettuce, tomato, avocado, and hummus wrapped in a flour tortilla.
+      </li>
+    </ul>
+  
+
+    <canvas id="canvas" width = "500" height = "250"></canvas>
+    <script>
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+
+      // Draw Sandwich
+      ctx.fillStyle = '#FFA500';
+      ctx.fillRect(0, 0, 200, 50);
+
+      // Draw lettuce on the sandwich
+      ctx.fillStyle = '#00FF00';
+      ctx.fillRect(0, 50, 200, 25);
+
+      // SDraw tomato on the sandwich
+      ctx.fillStyle = '#FF0000';
+      ctx.fillRect(0, 75, 200, 25);
+
+      // Draw the bottom slice of bread
+      ctx.fillStyle = '#FFA500';
+      ctx.fillRect(0, 100, 200, 50);
+
+      // Make tagline fade out after delay
+      $(document).ready(function() {
+        setTimeout(function() {
+          $('#tagline').fadeOut('slow');
+        }, 2000);
+      });
+
+      // function that draws 'sesame seeds' on the sandwich
+      function drawLightYellowOvals(canvas, x, y) {
+          // Set the fill style to light yellow
+        ctx.fillStyle = 'rgb(255, 255, 224)';
+
+        // Draw the oval on the canvas
+        ctx.beginPath();
+        ctx.ellipse(x, y, 8, 5, 0, 0, 2 * Math.PI);
+        ctx.fill();
+      } 
+
+      drawLightYellowOvals(canvas, 10, 15);        
+      drawLightYellowOvals(canvas, 60, 40);
+      drawLightYellowOvals(canvas, 120, 15);
+      drawLightYellowOvals(canvas, 100, 25);
+      drawLightYellowOvals(canvas, 180, 20);
+      drawLightYellowOvals(canvas, 30, 35);
+
+      // Make circles the same color as background to 'take bites' of the sandwhich
+      function drawCircles(canvas, x, y) {
+      ctx.fillStyle = "rgb(53, 94, 59)";
+      // Draw the circle on the canvas
+      ctx.beginPath();
+      ctx.arc(x, y, 50, 0, 2 * Math.PI);
+      ctx.fill();
+}
+
+      setTimeout(function() {
+        drawCircles(canvas, 10, 10);
+      }, 5000);
+      setTimeout(function() {
+        drawCircles(canvas, 10, 75);
+      }, 6000);
+      setTimeout(function() {
+        drawCircles(canvas, 10, 125);
+      }, 7000);
+      setTimeout(function() {
+        drawCircles(canvas, 60, 10);
+      }, 8000); 
+      setTimeout(function() {
+        drawCircles(canvas, 70, 50);
+      }, 9000);
+      setTimeout(function() {
+        drawCircles(canvas, 100, 80);
+      }, 10000);
+      setTimeout(function() {
+        drawCircles(canvas, 90, 120);
+      }, 11000);
+
+
+      // Prompt user for birthyear on pageload and display message accordingly
+      function birthYear() {
+        // Prompt the user for their birth year
+        let birthYear = prompt('Please enter your birth year:');
+
+        // Calculate the user's age based on their birth year
+        let age = new Date().getFullYear() - birthYear;
+
+        // Create a variable to hold the message to display on the webpage
+        let message = '';
+
+        // Check the user's age and set the message accordingly
+        if (age < 10) {
+          message = 'We have PB&Js and other kid favorites! Check out our children\'s menu.';
+        } else if (age >= 60) {
+          message = 'Older adults deserve great sandwhiches! Ask about our senior citizen discounts.';
+        } else {
+          message = 'We have a great selection of dishes for all ages. Come on in and enjoy!';
+        }
+
+        // Display the message on the webpage
+        document.getElementById('message').innerHTML = message;
+      }
+
+      // Constructor for custom sandwiches
+      function Sandwich(bread, meat, cheese) {
+        // Define properties for the bread, meat, and cheese
+        this.bread = bread;
+        this.meat = meat;
+        this.cheese = cheese;
+
+        // Define an array of possible toppings
+        this.toppings = ['lettuce', 'tomato', 'onion', 'pickles', 'avocado', 'mayo', 'mustard', 'honey mustard'];
+      }
+
+      // Define a prototype method for the Sandwich constructor
+      Sandwich.prototype.addTopping = function(topping) {
+        // Check if the topping is valid (i.e., if it's in the array of toppings)
+        if (this.toppings.indexOf(topping) >= 0) {
+          // If it's valid, add it to the toppings array
+          this.toppings.push(topping);
+          return true;  // Return true to indicate that the topping was added successfully
+        } else {
+          return false;  // Return false to indicate that the topping was not added
+        }
+      }
+
+      // Create three different sandwiches
+      const sandwich1 = new Sandwich('wheat', 'turkey', 'cheddar');
+      const sandwich2 = new Sandwich('white', 'ham', 'swiss');
+      const sandwich3 = new Sandwich('rye', 'roast beef', 'provolone');
+
+      // Add some toppings to each sandwich
+      sandwich1.addTopping('lettuce');
+      sandwich1.addTopping('tomato');
+      sandwich1.addTopping('onion');
+      sandwich1.addTopping('pickles');
+      sandwich1.addTopping('avocado');
+      sandwich1.addTopping('mayo');
+
+      sandwich2.addTopping('lettuce');
+      sandwich2.addTopping('tomato');
+      sandwich2.addTopping('onion');
+      sandwich2.addTopping('pickles');
+      sandwich2.addTopping('mayo');
+
+      sandwich3.addTopping('lettuce');
+      sandwich3.addTopping('tomato');
+      sandwich3.addTopping('onion');
+      sandwich3.addTopping('mayo');
+
+      window.onload = birthYear;
+
+    </script>
+  </body>
+</html>
+
